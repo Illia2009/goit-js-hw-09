@@ -13,13 +13,10 @@ form.addEventListener('input', inputHandler);
 form.addEventListener('submit', submitHandler);
 
 function inputHandler(e) {
-  if (e.target.name !== 'email' && e.target.name !== 'message') {
-    return;
+  if (e.target.name === 'email' || e.target.name === 'message') {
+    formData[e.target.name] = e.target.value.trim();
+    localStorage.setItem(KEY, JSON.stringify(formData));
   }
-
-  formData[e.target.name] = e.target.value.trim();
-
-  localStorage.setItem(KEY, JSON.stringify(formData));
 }
 
 function getStorage() {
